@@ -13,6 +13,21 @@ async function renderComponent(type, path) {
     return document.body.appendChild(renderer)
 }
 
+/**
+ * toglie tutti gli "id" e "style" dall'svg
+ * @param element elemento placeholder che viene rimpiazzato con l'svg
+ * @param path percorso dell'svg che rimpiazza
+ */
+async function render_svg(element, path) {
+    element.innerHTML = await fetch(path).then(data => data.text())
+    element.parentElement.replaceChild(element.querySelector("svg"), element)
+
+    Array.from(element.getElementsByTagName('*')).forEach(node => {
+        node.removeAttribute('id')
+        node.removeAttribute('style')
+    })
+}
+
 const MyComponents = {
     Title: async () => await renderComponent('title', '/components/title/title.html'),
     Card: async () => await renderComponent('card', '/components/card/card.html')
@@ -24,19 +39,23 @@ const MyComponents = {
         {
             href: 'https://it.wikipedia.org/',
             about: 'About Me',
-            svg: '',
+            svg: '/photo/svg/portfolio.svg',
             button: '',
         }
     ]
 
     for (const data of TitleData) {
         const title = await MyComponents.Title()
-        title.querySelector('a').href = data.href
-        title.querySelector('a').innerText = data.about
-        title.querySelector('svg').innerHTML = data.svg
-        title.querySelector('button').button = data.button
-    }
 
+        const link = title.querySelector("a")
+        link.href = data.href
+        link.innerText = data.about
+
+        await render_svg(title.querySelector('div'), data.svg)
+
+
+        title.appendChild(await my)
+    }
 
     const CardData = [
         {
