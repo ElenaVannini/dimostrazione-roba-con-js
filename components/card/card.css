@@ -1,3 +1,39 @@
 div[data-type="card"] {
-    h2 { color: rebeccapurple; }
+    border-radius: 4px;
+    background-color: white;
+    text-align: center;
+
+    > a:link {
+        text-decoration: none;
+        color: var(--color-2);
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    > a:visited {
+        color: var(--color-2);
+    }
+
+    > :first-child {
+        height: 100%;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        align-items: center;
+        justify-items: center;
+        padding: 1rem;
+        gap: 1rem;
+        position: relative;
+
+        & > img {
+            border-radius: 3px;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        > :first-child {
+            grid-template-columns: 1fr;
+            padding: 0.25rem;
+            gap: 0.25rem;
+        }
+    }
 }

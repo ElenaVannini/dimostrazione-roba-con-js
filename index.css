@@ -1,0 +1,17 @@
+:root {
+    --color-1: #e6e6ff;
+    --color-2: #0f0e47;
+    --color-3: #292966;
+    --color-4: #ffffff;
+    --color-5: #0a001b;
+    --color-6: #0e1129;
+}
+
+body {
+    font-family: Times New Roman, Arial, sans-serif;
+    background-color: var(--color-1);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+}
