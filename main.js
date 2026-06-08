@@ -30,7 +30,8 @@ async function render_svg(element, path) {
 
 const MyComponents = {
     Title: async () => await renderComponent('title', '/components/title/title.html'),
-    Card: async () => await renderComponent('card', '/components/card/card.html')
+    Card: async () => await renderComponent('card', '/components/card/card.html'),
+    NightButton: async () => await renderComponent('night_button', '/components/card/night-button.html')
 };
 
 (async () => {
@@ -54,7 +55,7 @@ const MyComponents = {
         await render_svg(title.querySelector('div'), data.svg)
 
 
-        title.appendChild(await my)
+        title.appendChild = await MyComponents.NightButton()
     }
 
     const CardData = [

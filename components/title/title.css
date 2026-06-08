@@ -1,5 +1,28 @@
 div[data-type="title"] {
     grid-column: 1 / -1;
     text-align: center;
-    color: var(--color-1);
+    position: relative;
+
+    a {
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        transform: translate(-50%, -50%);
+    }
+
+    > a:link {
+        text-decoration: none;
+        color: var(--color-2);
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    > a:visited {
+        color: var(--color-2);
+    }
+
+    svg {
+        fill: --color-2;
+        height: 6rem;
+    }
 }
